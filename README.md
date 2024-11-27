@@ -1,7 +1,7 @@
 <h1 align="center">Web-scrapper for <a href="https://books.toscrape.com">Books to Scrape</h1>
 
 <h2>Project Overview</h2>
-This project is a book scraper and saver application designed as part of a test assignment. The application scrapes book information from a specified URL, processes the data, and saves it into a database. It provides support for pagination, allowing you to scrape page by passing an optional pageNumber parameter.
+This project is a book scraper and saver application designed as part of a test assignment. The application scrapes book information from a specified URL, processes the data, and saves it into a database. It supports pagination, allowing you to scrape a page by passing an optional page number parameter.
 
 <h2>Technologies Used</h2>
 <ul>
