@@ -8,6 +8,6 @@ class ScrapperApplicationTests {
 
     @Test
     void contextLoads() {
+        // why this method is empty?:>
     }
-
 }

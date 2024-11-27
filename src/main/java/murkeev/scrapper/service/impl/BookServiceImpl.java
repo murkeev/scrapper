@@ -15,6 +15,9 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class BookServiceImpl implements BooksService {
+
+    private final String BOOK_NOT_FOUND = "Book not found";
+
     private final BookRepository bookRepository;
     private final ScrapperServiceImpl scrapperServiceImpl;
 
@@ -30,7 +33,7 @@ public class BookServiceImpl implements BooksService {
         Page<Book> booksPage = bookRepository.findAll(pageable);
 
         if (booksPage.isEmpty()) {
-            throw new EntityNotFoundException("Books not found");
+            throw new EntityNotFoundException(BOOK_NOT_FOUND);
         }
         return booksPage;
     }
@@ -40,14 +43,14 @@ public class BookServiceImpl implements BooksService {
         Page<Book> booksPage = bookRepository.findAll(pageable);
 
         if (booksPage.isEmpty()) {
-            throw new EntityNotFoundException("Books not found");
+            throw new EntityNotFoundException(BOOK_NOT_FOUND);
         }
         return booksPage;
     }
 
     @Override
     public Book findBookById(Long id) {
-        return bookRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Book not found"));
+        return bookRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(BOOK_NOT_FOUND));
     }
 
     @Override
@@ -55,7 +58,7 @@ public class BookServiceImpl implements BooksService {
         try {
             bookRepository.deleteAll();
         } catch (EmptyResultDataAccessException e) {
-            throw new EntityNotFoundException("Books not found");
+            throw new EntityNotFoundException(BOOK_NOT_FOUND);
         }
     }
 
@@ -64,7 +67,7 @@ public class BookServiceImpl implements BooksService {
         try {
             bookRepository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
-            throw new EntityNotFoundException("Book not found");
+            throw new EntityNotFoundException(BOOK_NOT_FOUND);
         }
     }
 }
